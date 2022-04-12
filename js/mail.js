@@ -1,6 +1,7 @@
 const scriptURL = ''-+
 
 const form = document.forms['google-sheet']
+const emptyt ='heloo'
 
 form.addEventListener('submit', e => {
   e.preventDefault()
