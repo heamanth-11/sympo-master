@@ -1,11 +1,13 @@
-const scriptURL = ''-+
-
-const form = document.forms['google-sheet']
-const emptyt ='heloo'
-
-form.addEventListener('submit', e => {
-  e.preventDefault()
-  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-    .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
-    .catch(error => console.error('Error!', error.message))
-})
+var form = document.getElementById('sheetdb-form');
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  fetch(form.action, {
+      method : "POST",
+      body: new FormData(document.getElementById("sheetdb-form")),
+  }).then(
+      response => response.json()
+  ).then((html) => {
+    // you can put any JS code here
+    alert('success')
+  });
+});
