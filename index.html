@@ -289,7 +289,7 @@ vid.volume = 0.8;
                                         <input type="text" name="data[Name]" class="form-control" placeholder="Your Name *" value="" required=""/>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="data[Email]" class="form-control" placeholder="Your Email *" value="" required=""/>
+                                        <input type="text" name="data[Email]" pattern="[^ @]*@[^ @]*"  class="form-control" placeholder="Your Email *" value="" required=""/>
                                     </div>
                                     <div class="form-group">
                                         <input type="number" name="data[Phone]" class="form-control" placeholder="Your Contact Number *" value="" required=""/>
@@ -324,9 +324,6 @@ form.addEventListener("submit", e => {
     alert('Registed Succesfully')
   });
 });
-
-
-
 </script>
 
 <!-- mail script end -->
