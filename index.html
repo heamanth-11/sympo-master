@@ -2,11 +2,21 @@
 <html class="no-js" lang="zxx">
 
 <head>
+    <!-- seo start -->
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>METAGRAPHIE "22</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta name="robots" content="">
+	<meta name="description" content="">
+	<meta property="og:title" content="">
+	<meta property="og:description" content="">
+	<meta property="og:image" content="">
+	<meta name="format-detection" content="telephone=no">
+    <!-- seo end -->
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="#">
@@ -25,7 +35,6 @@
     <link rel="stylesheet" href="css/slicknav.css">
 
     <link rel="stylesheet" href="css/style.css">
-    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 
 <body>
@@ -98,7 +107,7 @@
 
 
 <!-- audio -->
-<audio src="./meesaya.mp3" autoplay loop id="myAudio"></audio>
+<audio src="#" autoplay loop id="myAudio"></audio>
 <script>
     var vid = document.getElementById("myAudio");
 vid.volume = 0.8;
@@ -371,21 +380,21 @@ vid.volume = 0.8;
                         <h3 class="register-heading">Registration</h3>
                         <div class="row register-form">
                             <div class="col-md-12">
-                                <form method="post" autocomplete="off" name="google-sheet">
+                                <form action="https://sheetdb.io/api/v1/867r1gee69apu" method="POST" id="sheetdb-form" >
                                     <div class="form-group">
-                                        <input type="text" name="Name" class="form-control" placeholder="Your Name *" value="" required=""/>
+                                        <input type="text" name="data[Name]" class="form-control" placeholder="Your Name *" value="" required=""/>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="Email" class="form-control" placeholder="Your Email *" value="" required=""/>
+                                        <input type="text" name="data[Email]" pattern="[^ @]*@[^ @]*"  class="form-control" placeholder="Your Email *" value="" required=""/>
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" name="Phone" class="form-control" placeholder="Your Contact Number *" value="" required=""/>
+                                        <input type="number" name="data[Phone]" class="form-control" placeholder="Your Contact Number *" value="" required=""/>
                                     </div>
                                     <div class="form-group">
-                                        <input type="college name" name="Phone" class="form-control" placeholder="your college name *" value="" required=""/>
+                                        <input type="college name" name="data[Clg name]" class="form-control" placeholder="your college name *" value="" required=""/>
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" name="submit" class="btnSubmit btn-block" value="Login" />
+                                        <input type="submit" name="submit" class="btnSubmit btn-block" value="submit"/>
                                     </div>
                                 </form>
                             </div>
@@ -394,7 +403,29 @@ vid.volume = 0.8;
             </div>
         </div>
     </div>
-    <!-- form-end -->
+   
+ <!-- mail script -->
+
+<script>
+ var form = document.getElementById('sheetdb-form');
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  fetch(form.action, {
+      method : "POST",
+      body: new FormData(document.getElementById("sheetdb-form")),
+  }).then(
+      response => response.json()
+  ).then((html) => {
+    location.reload(true)
+    alert('Registed Succesfully')
+  });
+});
+</script>
+
+<!-- mail script end -->
+
+<!-- form-end -->
+
 
     <!-- map_area_start  -->
     <div class="map_area">
@@ -500,6 +531,7 @@ vid.volume = 0.8;
         </div>
     </div>
     <!-- brand_area_end  -->
+
     <!-- footer_start  -->
     <footer class="footer">
         <div class="footer_top">
@@ -523,9 +555,9 @@ vid.volume = 0.8;
                 <div class="row">
                     <div class="col-xl-12">
                         <p class="copy_right text-center wow fadeInDown" data-wow-duration="1s" data-wow-delay=".5s">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | METAGRAPHIA "22
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
                         </p>
                     </div>
                 </div>
@@ -554,10 +586,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/tilt.jquery.js"></script>
     <script src="js/plugins.js"></script>
-
-
-
     <script src="js/main.js"></script>
+
 </body>
 
 </html>
