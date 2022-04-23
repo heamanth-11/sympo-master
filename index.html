@@ -69,7 +69,7 @@
                             <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                                 <div class="buy_tkt">
                                     <div class="book_btn d-none d-lg-block">
-                                        <a href="#">Register Now</a>
+                                        <a href="#sheetdb-form">Register Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -412,21 +412,22 @@ vid.volume = 0.8;
                         <h3 class="register-heading">Registration</h3>
                         <div class="row register-form">
                             <div class="col-md-12">
-                                <form action="https://sheetdb.io/api/v1/867r1gee69apu" method="POST" id="sheetdb-form" >
+                                <form onsubmit="register" action="https://metagraphia2022-server.herokuapp.com/register" method="post" id="sheetdb-form" >
                                     <div class="form-group">
-                                        <input type="text" name="data[Name]" class="form-control" placeholder="Your Name *" value="" required=""/>
+                                        <input type="text" name="name" class="form-control" placeholder="Your Name *"   required=""/>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="data[Email]" pattern="[^ @]*@[^ @]*"  class="form-control" placeholder="Your Email *" value="" required=""/>
+                                        <input type="text" name="email"  class="form-control" placeholder="Your Email *" value="" required=""/>
                                     </div>
                                     <div class="form-group">
-                                        <input type="number" name="data[Phone]" class="form-control" placeholder="Your Contact Number *" value="" required=""/>
+                                        <input type="number" name="phone" class="form-control" placeholder="Your Contact Number *" value="" required=""/>
                                     </div>
                                     <div class="form-group">
-                                        <input type="college name" name="data[Clg name]" class="form-control" placeholder="your college name *" value="" required=""/>
+                                        <input type="college name" name="clgName" class="form-control" placeholder="your college name *" value="" required=""/>
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" name="submit" class="btnSubmit btn-block" value="submit"/>
+                                        <input type="submit"  name="submit" class="btnSubmit btn-block" value="submit"/>
+                                        <!-- <button type="button" onclick="registeration" class="btnSubmit btn-block" >Register</button> -->
                                     </div>
                                 </form>
                             </div>
@@ -441,15 +442,20 @@ vid.volume = 0.8;
 <script>
  var form = document.getElementById('sheetdb-form');
 form.addEventListener("submit", e => {
-  e.preventDefault();
+//   e.preventDefault();
+  console.log(e.FormData,this.name)
   fetch(form.action, {
       method : "POST",
       body: new FormData(document.getElementById("sheetdb-form")),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "Access-Control-Allow-Origin" :'*'
+    }
   }).then(
       response => response.json()
   ).then((html) => {
     location.reload(true)
-    alert('Registed Succesfully')
+    alert('Registered Succesfully')
   });
 });
 </script>
